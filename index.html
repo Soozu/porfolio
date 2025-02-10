@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soozu | Developer Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="cursor"></div>
+    <div class="cursor-follower"></div>
+    <div id="canvas-container"></div>
+    
+    <div class="nav-buttons">
+        <div class="nav-dot active" data-section="home"></div>
+        <div class="nav-dot" data-section="projects"></div>
+        <div class="nav-dot" data-section="skills"></div>
+        <div class="nav-dot" data-section="contact"></div>
+    </div>
+
+    <div class="container">
+        <header>
+            <nav>
+                <div class="logo">SOOZU</div>
+                <ul>
+                </ul>
+            </nav>
+        </header>
+
+        <section id="home" class="active">
+            <div class="hero">
+                <h1>
+                    <span>S</span>
+                    <span>o</span>
+                    <span>o</span>
+                    <span>z</span>
+                    <span>u</span>
+                </h1>
+                <h2>
+                    <span>F</span>
+                    <span>u</span>
+                    <span>l</span>
+                    <span>l</span>
+                    <span> </span>
+                    <span>S</span>
+                    <span>t</span>
+                    <span>a</span>
+                    <span>c</span>
+                    <span>k</span>
+                    <span> </span>
+                    <span>D</span>
+                    <span>e</span>
+                    <span>v</span>
+                    <span>e</span>
+                    <span>l</span>
+                    <span>o</span>
+                    <span>p</span>
+                    <span>e</span>
+                    <span>r</span>
+                </h2>
+                <p class="typing-text">Building innovative web solutions with modern technologies</p>
+                <div class="social-links">
+                    <a href="https://github.com/Soozu?tab=repositories" target="_blank"><i class="fab fa-github"></i></a>
+                    <a href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects">
+            <h2>My Projects</h2>
+            <div class="project-grid">
+                <div class="project-card" onclick="openModal(this)">
+                    <h3>LMS Camerino</h3>
+                    <p>A modern Learning Management System designed for seamless educational experiences.</p>
+                    <div class="tech-stack">
+                        <span>HTML5</span>
+                        <span>CSS3</span>
+                        <span>JavaScript</span>
+                        <span>PHP</span>
+                        <span>MySQL</span>
+                    </div>
+                    <div class="project-details" style="display: none;">
+                        <img src="lms-camerino.jpg" alt="LMS Camerino">
+                        <p>A comprehensive Learning Management System that revolutionizes how teachers and students interact. Features include:</p>
+                        <ul>
+                            <li>Interactive course management</li>
+                            <li>Real-time grade tracking</li>
+                            <li>Resource sharing platform</li>
+                            <li>Automated assignment submission</li>
+                        </ul>
+                        <a href="https://camerinohub.site/" class="project-link">View Live Demo</a>
+                    </div>
+                </div>
+
+                <div class="project-card" onclick="openModal(this)">
+                    <h3>LMS St. Thomas More Academy</h3>
+                    <p>An intuitive Learning Management System built for enhanced educational collaboration.</p>
+                    <div class="tech-stack">
+                        <span>HTML5</span>
+                        <span>CSS3</span>
+                        <span>JavaScript</span>
+                        <span>PHP</span>
+                        <span>MySQL</span>
+                    </div>
+                    <div class="project-details" style="display: none;">
+                        <img src="lms-stthomasmoreacademy.jpg" alt="LMS St. Thomas More Academy">
+                        <p>A state-of-the-art Learning Management System featuring:</p>
+                        <ul>
+                            <li>Advanced course management</li>
+                            <li>Interactive learning tools</li>
+                            <li>Progress tracking dashboard</li>
+                            <li>Integrated communication system</li>
+                        </ul>
+                        <a href="https://stthomasmoreacademy.site/" class="project-link">Explore Project</a>
+                    </div>
+                </div>
+
+                <div class="project-card" onclick="openModal(this)">
+                    <h3>HGA Gaming Website</h3>
+                    <p>A dynamic gaming platform that brings communities together through interactive experiences.</p>
+                    <div class="tech-stack">
+                        <span>React</span>
+                        <span>Node.js</span>
+                        <span>Express</span>
+                        <span>MongoDB</span>
+                        <span>WebSocket</span>
+                    </div>
+                    <div class="project-details" style="display: none;">
+                        <img src="hga-gaming.jpg" alt="HGA Gaming Website">
+                        <p>An immersive gaming platform featuring:</p>
+                        <ul>
+                            <li>Real-time multiplayer gaming</li>
+                            <li>Community forums</li>
+                            <li>Live chat system</li>
+                            <li>User profile customization</li>
+                        </ul>
+                        <a href="https://example.com/hga-gaming" class="project-link">Visit Website</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills">
+            <h2>Skills & Technologies</h2>
+            <div class="skills-container">
+                <div class="skill">
+                    <i class="fab fa-html5"></i>
+                    <span>HTML5</span>
+                </div>
+                <div class="skill">
+                    <i class="fab fa-css3-alt"></i>
+                    <span>CSS3</span>
+                </div>
+                <div class="skill">
+                    <i class="fab fa-js"></i>
+                    <span>JavaScript</span>
+                </div>
+                <div class="skill">
+                    <i class="fab fa-react"></i>
+                    <span>React</span>
+                </div>
+                <div class="skill">
+                    <i class="fab fa-node-js"></i>
+                    <span>Node.js</span>
+                </div>
+                <div class="skill">
+                    <i class="fab fa-php"></i>
+                    <span>PHP</span>
+                </div>
+                <div class="skill">
+                    <i class="fas fa-database"></i>
+                    <span>MySQL</span>
+                </div>
+                <div class="skill">
+                    <i class="fab fa-git-alt"></i>
+                    <span>Git</span>
+                </div>
+                <div class="skill">
+                    <i class="fab fa-python"></i>
+                    <span>Python</span>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <h2>Get In Touch</h2>
+            <div class="contact-container">
+                <!-- Contact Info -->
+                <div class="contact-info">
+                    <div class="contact-header">
+                        <h3>Contact Information</h3>
+                        <p>Feel free to reach out! I'll get back to you as soon as possible.</p>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div class="contact-details">
+                            <h3>Email</h3>
+                            <p>christianpacifico20@gmail.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <div class="contact-details">
+                            <h3>Phone</h3>
+                            <p>+63 950 422 2701</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div class="contact-details">
+                            <h3>Location</h3>
+                            <p>Bacoor, Cavite City, Philippines</p>
+                        </div>
+                    </div>
+                    <div class="social-links-contact">
+                        <a href="https://github.com/Soozu" target="_blank" title="GitHub">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="#" target="_blank" title="LinkedIn">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="#" target="_blank" title="Twitter">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Contact Form -->
+                <form id="contact-form">
+                    <div class="form-header">
+                        <h3>Send Message</h3>
+                        <p>Have a question or want to work together?</p>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" placeholder="Your Email" required>
+                            <div class="email-feedback" id="email-feedback"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <input type="text" id="subject" name="subject" placeholder="Subject" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" placeholder="Your Message" required></textarea>
+                    </div>
+                    
+                    <button type="submit">
+                        <span>Send Message</span>
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </form>
+            </div>
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+
+    <div class="modal" id="projectModal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2 class="modal-title"></h2>
+            <div class="modal-body"></div>
+            <a href="#" class="project-link">View Project</a>
+        </div>
+    </div>
+
+    <script>
+        // Fallback if CDN fails
+        if(!window.particlesJS) {
+            console.warn('Particles.js failed to load');
+        }
+    </script>
+</body>
+</html> 

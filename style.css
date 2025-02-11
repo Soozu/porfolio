@@ -32,8 +32,6 @@ body {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
-    height: 100vh;
-    overflow: hidden;
 }
 
 /* Updated header styles */
@@ -52,6 +50,7 @@ nav {
     font-weight: bold;
     color: var(--primary-color);
     letter-spacing: 2px;
+    padding: 20px 0;
 }
 
 nav ul {
@@ -170,15 +169,11 @@ nav ul li a:hover::after {
 }
 
 section {
-    position: absolute;
-    width: 100%;
-    height: 100vh;
+    position: relative;
+    min-height: 100vh;
     opacity: 0;
     visibility: hidden;
-    transition: opacity 0.5s ease-in-out;
-    padding: 80px 20px;
-    top: 0;
-    left: 0;
+    transition: opacity 0.3s ease-in-out;
 }
 
 section.active {
@@ -321,68 +316,6 @@ section.active {
     width: 60px;
     height: 3px;
     background: var(--primary-color);
-}
-
-.skills-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-    gap: 25px;
-    margin: 40px auto;
-    max-width: 1000px;
-    padding: 20px;
-}
-
-.skill {
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(100, 255, 218, 0.1);
-    padding: 25px 20px;
-    border-radius: 15px;
-    text-align: center;
-    transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
-    backdrop-filter: blur(10px);
-}
-
-.skill:hover {
-    transform: translateY(-10px);
-    border-color: var(--primary-color);
-    box-shadow: 0 10px 30px rgba(100, 255, 218, 0.1);
-}
-
-.skill i {
-    font-size: 45px;
-    color: var(--primary-color);
-    margin-bottom: 15px;
-    transition: all 0.3s ease;
-}
-
-.skill:hover i {
-    transform: scale(1.1);
-}
-
-.skill span {
-    display: block;
-    font-size: 1.1rem;
-    color: var(--text-color);
-    font-weight: 500;
-    margin-top: 10px;
-}
-
-.skill::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(45deg, transparent, rgba(100, 255, 218, 0.03), transparent);
-    transform: translateX(-100%);
-    transition: transform 0.6s ease;
-}
-
-.skill:hover::before {
-    transform: translateX(100%);
 }
 
 /* Updated Contact Section Styles */
@@ -787,30 +720,6 @@ body.modal-open {
     overflow: hidden;
 }
 
-/* Navigation buttons */
-.nav-buttons {
-    position: fixed;
-    right: 30px;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 10;
-}
-
-.nav-dot {
-    width: 12px;
-    height: 12px;
-    background: rgba(255, 255, 255, 0.3);
-    border-radius: 50%;
-    margin: 10px 0;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.nav-dot.active {
-    background: #64ffda;
-    transform: scale(1.3);
-}
-
 /* Scrollbar styling */
 .project-grid::-webkit-scrollbar,
 .skills-container::-webkit-scrollbar {
@@ -874,11 +783,6 @@ body.modal-open {
     opacity: 1; /* Show feedback */
 }
 
-/* Custom Cursor Styles */
-body {
-    cursor: none; /* Hide the default cursor */
-}
-
 /* Main cursor dot */
 .cursor {
     width: 8px;
@@ -920,15 +824,13 @@ body {
 /* Add hover states for interactive elements */
 a:hover ~ .cursor,
 button:hover ~ .cursor,
-.project-card:hover ~ .cursor,
-.skill:hover ~ .cursor {
+.project-card:hover ~ .cursor {
     transform: scale(1.5);
 }
 
 a:hover ~ .cursor-follower,
 button:hover ~ .cursor-follower,
-.project-card:hover ~ .cursor-follower,
-.skill:hover ~ .cursor-follower {
+.project-card:hover ~ .cursor-follower {
     transform: scale(0.8);
 }
 
@@ -1043,5 +945,264 @@ button[type="submit"]:hover i {
     
     .contact-info, #contact-form {
         width: 100%;
+    }
+}
+
+/* Mobile Navigation Fixes */
+@media screen and (max-width: 768px) {
+    /* Fix section visibility */
+    section {
+        position: relative;  /* Change from absolute to relative */
+        height: auto;       /* Allow content to determine height */
+        min-height: 100vh;  /* Ensure minimum full viewport height */
+        overflow-y: auto;   /* Enable scrolling if needed */
+    }
+
+    /* Container adjustments */
+    .container {
+        height: auto;
+        overflow: visible;
+    }
+
+    /* Project grid scrolling fix */
+    .project-grid {
+        max-height: none;
+        overflow-y: visible;
+    }
+
+    /* Adjust spacing */
+    #projects, #skills, #contact {
+        padding-top: 60px;
+        padding-bottom: 60px;
+    }
+
+    /* Fix modal scrolling */
+    .modal-content {
+        max-height: 90vh;
+        overflow-y: auto;
+    }
+
+    /* Navigation dots adjustment */
+    .nav-buttons {
+        position: fixed;
+        right: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 1000;
+    }
+}
+
+/* Extra Small Devices */
+@media screen and (max-width: 480px) {
+    /* Further reduce padding */
+    .container {
+        padding: 0 10px;
+    }
+
+    /* Adjust project cards */
+    .project-card {
+        margin-bottom: 20px;
+    }
+
+    /* Adjust contact form */
+    .contact-container {
+        margin: 0;
+        padding: 10px;
+    }
+
+    /* Make form elements more touch-friendly */
+    input, 
+    textarea,
+    button {
+        font-size: 16px;
+        margin-bottom: 15px;
+    }
+
+    /* Adjust modal for small screens */
+    .modal-content {
+        margin: 5% auto;
+        padding: 15px;
+    }
+}
+
+/* Fix iOS height issues */
+@supports (-webkit-touch-callout: none) {
+    section {
+        min-height: -webkit-fill-available;
+    }
+    
+    .container {
+        min-height: -webkit-fill-available;
+    }
+}
+
+/* Fix section transitions */
+section {
+    transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+    will-change: opacity, visibility;
+}
+
+/* Ensure content is visible on mobile */
+section.active {
+    display: block;
+    opacity: 1;
+    visibility: visible;
+    z-index: 2;
+}
+
+/* Landscape Mode */
+@media screen and (max-height: 500px) and (orientation: landscape) {
+    .hero {
+        padding: 60px 0;
+    }
+
+    .hero h1 {
+        font-size: 32px;
+        margin-bottom: 10px;
+    }
+
+    .hero h2 {
+        font-size: 18px;
+        margin-bottom: 10px;
+    }
+
+    .section {
+        padding: 40px 0;
+    }
+}
+
+/* Touch Device Optimizations */
+@media (hover: none) {
+    /* Remove hover effects for touch devices */
+    .project-card:hover,
+    .contact-item:hover {
+        transform: none;
+    }
+
+    /* Hide custom cursor on touch devices */
+    .cursor,
+    .cursor-follower {
+        display: none;
+    }
+
+    body {
+        cursor: auto;
+    }
+
+    /* Adjust tap targets */
+    .nav-dot {
+        width: 15px;
+        height: 15px;
+        margin: 15px 0;
+    }
+
+    button,
+    .project-link,
+    .social-links a {
+        padding: 15px 25px;
+    }
+}
+
+/* High DPI Screens */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .hero h1,
+    h2 {
+        text-rendering: optimizeLegibility;
+    }
+}
+
+/* Add these styles for the sidebar */
+.sidebar {
+    position: fixed;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(10, 25, 47, 0.85);
+    padding: 20px 10px;
+    border-radius: 30px 0 0 30px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(100, 255, 218, 0.1);
+    border-right: none;
+    z-index: 1000;
+}
+
+.nav-links {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.nav-links a {
+    display: flex;
+    align-items: center;
+    color: var(--text-color);
+    text-decoration: none;
+    padding: 10px 15px;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+.nav-links a span {
+    opacity: 0;
+    width: 0;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    font-size: 14px;
+    margin-left: 0;
+}
+
+.nav-links a:hover span {
+    opacity: 1;
+    width: auto;
+    margin-left: 10px;
+}
+
+.nav-links a i {
+    font-size: 20px;
+    min-width: 25px;
+    text-align: center;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    background: rgba(100, 255, 218, 0.1);
+    color: var(--primary-color);
+    transform: translateX(-5px);
+}
+
+/* Mobile responsive styles for sidebar */
+@media screen and (max-width: 768px) {
+    .sidebar {
+        bottom: 0;
+        top: auto;
+        right: 0;
+        left: 0;
+        transform: none;
+        border-radius: 20px 20px 0 0;
+        padding: 10px;
+        border: 1px solid rgba(100, 255, 218, 0.1);
+        border-bottom: none;
+    }
+
+    .nav-links {
+        flex-direction: row;
+        justify-content: space-around;
+    }
+
+    .nav-links a {
+        padding: 8px;
+    }
+
+    .nav-links a span {
+        display: none;
+    }
+
+    .nav-links a:hover span {
+        display: none;
+    }
+
+    .nav-links a:hover {
+        transform: translateY(-5px);
     }
 } 

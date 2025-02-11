@@ -6,12 +6,23 @@ require('dotenv').config();
 const validator = require('validator');
 
 const app = express();
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 3000;
 
-// Middleware
-app.use(cors());
+// Updated CORS configuration
+app.use(cors({
+    origin: [
+        'http://localhost:5500',
+        'http://127.0.0.1:5500',
+        'http://localhost:3000',
+        'https://portfolio2-nine-psi.vercel.app', // Add your frontend domain
+        'https://portfolio2-api-nine.vercel.app'  // Add your API domain
+    ],
+    methods: ['GET', 'POST'],
+    credentials: true
+}));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.static('public'));
 
 // Nodemailer setup with better email formatting
 const transporter = nodemailer.createTransport({
@@ -19,6 +30,15 @@ const transporter = nodemailer.createTransport({
     auth: {
         user: process.env.EMAIL_USER,
         pass: process.env.EMAIL_PASS
+    }
+});
+
+// Test email configuration
+transporter.verify((error, success) => {
+    if (error) {
+        console.error('Email verification error:', error);
+    } else {
+        console.log('Server is ready to send emails');
     }
 });
 
@@ -60,6 +80,11 @@ const createEmailHTML = (name, email, subject, message) => `
         </div>
     </div>
 `;
+
+// Test endpoint
+app.get('/test', (req, res) => {
+    res.json({ message: 'Server is running!' });
+});
 
 // Endpoint to handle form submission
 app.post('/send', (req, res) => {
@@ -129,7 +154,36 @@ ${message}
         });
 });
 
+app.post('/api/send', async (req, res) => {
+    const { name, email, message } = req.body;
+
+    if (!name || !email || !message) {
+        return res.status(400).json({ error: 'All fields are required' });
+    }
+
+    const mailOptions = {
+        from: process.env.EMAIL_USER,
+        to: process.env.EMAIL_USER,
+        subject: `Portfolio Contact from ${name}`,
+        html: `
+            <h3>New Contact Form Submission</h3>
+            <p><strong>Name:</strong> ${name}</p>
+            <p><strong>Email:</strong> ${email}</p>
+            <p><strong>Message:</strong></p>
+            <p>${message}</p>
+        `
+    };
+
+    try {
+        await transporter.sendMail(mailOptions);
+        res.status(200).json({ message: 'Email sent successfully' });
+    } catch (error) {
+        console.error('Error sending email:', error);
+        res.status(500).json({ error: 'Failed to send email' });
+    }
+});
+
 // Start the server
 app.listen(PORT, () => {
-    console.log(`Server is running on http://localhost:${PORT}`);
+    console.log(`Server running on port ${PORT}`);
 }); 

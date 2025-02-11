@@ -28,5 +28,8 @@
       "src": "/(.*)",
       "dest": "/$1"
     }
-  ]
+  ],
+  "speedInsights": {
+    "enabled": true
+  }
 } 

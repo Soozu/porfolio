@@ -8,10 +8,17 @@ document.addEventListener('DOMContentLoaded', function() {
     renderer.setSize(window.innerWidth, window.innerHeight);
     container.appendChild(renderer.domElement);
     
-    // Create ray-tracing like effect
+    // Get theme colors
+    const getThemeColors = () => {
+        const theme = document.documentElement.getAttribute('data-theme');
+        return theme === 'light' ? [0.4, 0.4, 0.4] : [0.4, 0.8, 0.86];
+    };
+    
+    // Create particles
     const geometry = new THREE.BufferGeometry();
     const vertices = [];
     const colors = [];
+    const themeColors = getThemeColors();
     
     for(let i = 0; i < 5000; i++) {
         vertices.push(
@@ -20,11 +27,7 @@ document.addEventListener('DOMContentLoaded', function() {
             Math.random() * 2000 - 1000
         );
         
-        colors.push(
-            0.4,
-            0.8,
-            0.86
-        );
+        colors.push(...themeColors);
     }
     
     geometry.setAttribute('position', new THREE.Float32BufferAttribute(vertices, 3));
@@ -45,10 +48,8 @@ document.addEventListener('DOMContentLoaded', function() {
     // Animation
     function animate() {
         requestAnimationFrame(animate);
-        
         points.rotation.x += 0.0003;
         points.rotation.y += 0.0003;
-        
         renderer.render(scene, camera);
     }
     

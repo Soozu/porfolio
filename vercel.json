@@ -1,5 +1,6 @@
 {
   "version": 2,
+  "public": true,
   "builds": [
     {
       "src": "server.js",
@@ -27,10 +28,5 @@
       "src": "/(.*)",
       "dest": "/$1"
     }
-  ],
-  "env": {
-    "EMAIL_SERVICE": "@email_service",
-    "EMAIL_USER": "@email_user",
-    "EMAIL_PASS": "@email_pass"
-  }
+  ]
 } 

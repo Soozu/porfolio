@@ -36,37 +36,33 @@ document.addEventListener('DOMContentLoaded', function() {
                 // Remove subject if it exists
                 delete data.subject;
 
-                // Use the full URL based on environment
-                const apiUrl = window.location.protocol === 'file:' 
-                    ? 'https://portfolio2-api-nine.vercel.app/api/send'  // Your actual Vercel deployment URL
-                    : '/api/send';
+                // Get the base URL from the current window location
+                const baseUrl = window.location.hostname.includes('localhost') || window.location.protocol === 'file:'
+                    ? 'https://portfolio2-soozu.vercel.app'  // Your Vercel deployment URL
+                    : '';
 
-                const response = await fetch(apiUrl, {
+                const response = await fetch(`${baseUrl}/api/send`, {
                     method: 'POST',
                     headers: {
-                        'Content-Type': 'application/json',
-                        'Accept': 'application/json',
-                        'Origin': window.location.origin
+                        'Content-Type': 'application/json'
                     },
-                    mode: 'cors',
-                    credentials: 'same-origin',
                     body: JSON.stringify(data)
                 });
 
-                const result = await response.json();
-
-                if (response.ok) {
-                    successMessage.classList.add('show');
-                    form.reset();
-                    setTimeout(() => {
-                        successMessage.classList.remove('show');
-                    }, 3000);
-                } else {
-                    throw new Error(result.error || 'Failed to send message');
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
                 }
+
+                const result = await response.json();
+                
+                successMessage.classList.add('show');
+                form.reset();
+                setTimeout(() => {
+                    successMessage.classList.remove('show');
+                }, 3000);
             } catch (error) {
                 console.error('Error:', error);
-                alert(error.message || 'Failed to send message. Please try again.');
+                alert('Failed to send message. Please try again.');
             } finally {
                 submitButton.disabled = false;
             }

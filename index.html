@@ -11,8 +11,18 @@
 <body>
     <div class="page-transition"></div>
     
-    <div class="cursor"></div>
-    <div class="cursor-follower"></div>
+    <!-- Loading Animation -->
+    <div class="loading-screen">
+        <div class="loader">
+            <div class="loader-content">
+                <svg class="circular" viewBox="25 25 50 50">
+                    <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="3" stroke-miterlimit="10"/>
+                </svg>
+                <h2 class="loading-text">Loading<span class="dots">...</span></h2>
+            </div>
+        </div>
+    </div>
+    
     <div id="canvas-container"></div>
 
     <div class="sidebar">
@@ -64,25 +74,45 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Check if this is the first visit
-            if (!sessionStorage.getItem('firstLoad')) {
-                // Add animation classes
-                document.body.classList.add('first-load');
-                sessionStorage.setItem('firstLoad', 'true');
+            const loadingScreen = document.querySelector('.loading-screen');
+            const hasVisited = localStorage.getItem('hasVisited');
+            
+            if (!hasVisited) {
+                // First time visit - show loading animation
+                loadingScreen.style.display = 'flex';
+                setTimeout(() => {
+                    loadingScreen.style.opacity = '0';
+                    setTimeout(() => {
+                        loadingScreen.style.display = 'none';
+                        // Set first visit flag
+                        localStorage.setItem('hasVisited', 'true');
+                        
+                        // First visit animations
+                        document.body.classList.add('first-load');
+                        sessionStorage.setItem('firstLoad', 'true');
+                        
+                        // Remove transition overlay
+                        setTimeout(() => {
+                            const transition = document.querySelector('.page-transition');
+                            if (transition) {
+                                transition.parentNode.removeChild(transition);
+                            }
+                        }, 1000);
+                    }, 300);
+                }, 2000);
             } else {
-                // Skip animations for subsequent visits
+                // Returning visitor - skip loading animation
+                loadingScreen.style.display = 'none';
                 document.body.classList.add('loaded');
                 const elements = document.querySelectorAll('.hero-content, .logo, h1, h2, p, .cta-buttons, .sidebar');
                 elements.forEach(el => el.style.opacity = '1');
-            }
-            
-            // Remove transition overlay
-            setTimeout(() => {
+                
+                // Remove transition overlay immediately
                 const transition = document.querySelector('.page-transition');
                 if (transition) {
                     transition.parentNode.removeChild(transition);
                 }
-            }, 1000);
+            }
         });
     </script>
     <script src="script.js"></script>

@@ -118,4 +118,695 @@
 .container {
     position: relative;
     z-index: 2;
+}
+
+.project-icon {
+    text-align: center;
+    margin: 20px 0;
+    padding: 30px;
+    background: rgba(100, 255, 218, 0.05);
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    transition: all 0.3s ease;
+}
+
+.project-icon i {
+    color: var(--primary-color);
+    transition: all 0.3s ease;
+}
+
+.project-card:hover .project-icon {
+    transform: scale(1.1);
+    background: rgba(100, 255, 218, 0.1);
+}
+
+.modal .project-icon {
+    margin: 30px auto;
+    width: 150px;
+    height: 150px;
+}
+
+.modal .project-icon i {
+    font-size: 4em;
+}
+
+/* Dark theme support */
+[data-theme="light"] .project-icon {
+    background: rgba(10, 25, 47, 0.05);
+}
+
+[data-theme="light"] .project-icon i {
+    color: var(--primary-color);
+}
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(10, 25, 47, 0.95);
+    z-index: 1000;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+}
+
+.modal.show {
+    opacity: 1;
+}
+
+.modal-content {
+    position: relative;
+    background: var(--bg-color);
+    margin: 40px auto;
+    padding: 40px;
+    width: 90%;
+    max-width: 900px;
+    border-radius: 20px;
+    border: 1px solid var(--primary-color);
+    transform: translateY(-20px) scale(0.98);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    max-height: calc(100vh - 80px);
+    overflow-y: auto;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.modal.show .modal-content {
+    transform: translateY(0) scale(1);
+}
+
+.modal-header {
+    position: relative;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(100, 255, 218, 0.1);
+}
+
+.modal-title {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    padding-right: 40px;
+    text-align: center;
+}
+
+.modal-tech-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+}
+
+.modal-tech-stack .tech-stack {
+    margin: 0;
+    justify-content: center;
+}
+
+.project-preview {
+    text-align: center;
+    padding: 40px;
+    background: rgba(100, 255, 218, 0.03);
+    border-radius: 20px;
+    border: 1px solid rgba(100, 255, 218, 0.1);
+    transition: all 0.3s ease;
+    margin: 20px 0;
+}
+
+.modal .project-icon {
+    width: 150px;
+    height: 150px;
+    margin: 0 auto;
+    padding: 30px;
+    background: rgba(100, 255, 218, 0.05);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.project-info {
+    text-align: left;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--text-color);
+    padding: 0 20px;
+}
+
+.project-info p {
+    margin-bottom: 25px;
+    opacity: 0.9;
+}
+
+.project-info ul {
+    padding-left: 25px;
+    margin: 25px 0;
+    list-style-type: none;
+}
+
+.project-info li {
+    margin-bottom: 15px;
+    position: relative;
+    padding-left: 25px;
+}
+
+.project-info li:before {
+    content: '▹';
+    position: absolute;
+    left: 0;
+    color: var(--primary-color);
+    font-size: 1.2em;
+}
+
+.modal-footer {
+    display: flex;
+    gap: 20px;
+    padding: 30px;
+    border-top: 1px solid rgba(100, 255, 218, 0.1);
+    margin-top: auto;
+    justify-content: center;
+}
+
+.modal-footer .btn {
+    min-width: 200px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    font-size: 1.1rem;
+    border-radius: 10px;
+    background: transparent;
+    border: 1px solid var(--primary-color);
+    color: var(--primary-color);
+    transition: all 0.3s ease;
+    padding: 0 30px;
+}
+
+.modal-footer .btn.primary {
+    background: var(--primary-color);
+    color: var(--bg-color);
+}
+
+.modal-footer .btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(100, 255, 218, 0.15);
+}
+
+.modal-footer .btn.primary:hover {
+    background: transparent;
+    color: var(--primary-color);
+}
+
+/* Scrollbar Styling */
+.modal-content::-webkit-scrollbar {
+    width: 8px;
+}
+
+.modal-content::-webkit-scrollbar-track {
+    background: rgba(100, 255, 218, 0.05);
+    border-radius: 4px;
+}
+
+.modal-content::-webkit-scrollbar-thumb {
+    background: rgba(100, 255, 218, 0.2);
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.modal-content::-webkit-scrollbar-thumb:hover {
+    background: rgba(100, 255, 218, 0.3);
+}
+
+/* Share Menu Styles */
+.share-menu {
+    position: absolute;
+    bottom: 80px;
+    right: 40px;
+    width: 300px;
+    background: var(--bg-color);
+    padding: 25px;
+    border-radius: 15px;
+    border: 1px solid var(--primary-color);
+    transform: scale(0.95);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(10px);
+}
+
+.share-menu.active {
+    transform: scale(1);
+    opacity: 1;
+    visibility: visible;
+}
+
+.share-menu h3 {
+    font-size: 1.2rem;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.share-buttons {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+}
+
+.share-button, .copy-link {
+    height: 45px;
+    font-size: 1rem;
+    border-radius: 10px;
+    background: rgba(100, 255, 218, 0.05);
+    border: 1px solid rgba(100, 255, 218, 0.2);
+    color: var(--primary-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.share-button:hover, .copy-link:hover {
+    background: rgba(100, 255, 218, 0.1);
+    transform: translateY(-2px);
+}
+
+.close-share {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: rgba(100, 255, 218, 0.1);
+    border: 1px solid rgba(100, 255, 218, 0.2);
+    color: var(--primary-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.close-share:hover {
+    background: rgba(100, 255, 218, 0.2);
+    transform: rotate(90deg);
+}
+
+.close-share i {
+    font-size: 1.2rem;
+}
+
+/* Animation keyframes */
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Dark theme support */
+[data-theme="light"] .share-menu {
+    background: var(--bg-color);
+    border-color: var(--primary-color);
+}
+
+/* Mobile Styles */
+@media screen and (max-width: 768px) {
+    .modal {
+        background: var(--bg-color);
+    }
+
+    .modal-content {
+        padding: 20px;
+        gap: 20px;
+    }
+
+    .modal-title {
+        text-align: left;
+        font-size: 1.8rem;
+        padding-right: 50px;
+    }
+
+    .modal-tech-stack {
+        justify-content: flex-start;
+    }
+
+    .modal-tech-stack .tech-stack {
+        justify-content: flex-start;
+    }
+
+    .project-info {
+        padding: 0;
+    }
+
+    .modal-footer {
+        padding: 20px 0;
+    }
+
+    .modal-footer .btn {
+        min-width: unset;
+        flex: 1;
+    }
+
+    .project-preview {
+        margin: 25px 0;
+        padding: 30px;
+        background: rgba(100, 255, 218, 0.03);
+        border-radius: 20px;
+        border: 1px solid rgba(100, 255, 218, 0.1);
+    }
+
+    .project-icon {
+        width: 120px;
+        height: 120px;
+        margin: 0 auto;
+        padding: 25px;
+        background: rgba(100, 255, 218, 0.05);
+    }
+
+    .project-icon i {
+        font-size: 3.5em !important;
+        color: var(--primary-color);
+    }
+
+    .close-modal {
+        position: fixed;
+        right: 15px;
+        top: 15px;
+        width: 44px;
+        height: 44px;
+        z-index: 3;
+        background: rgba(100, 255, 218, 0.1);
+        backdrop-filter: blur(5px);
+        border: 1px solid rgba(100, 255, 218, 0.2);
+        color: var(--primary-color);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        font-size: 1.2rem;
+    }
+
+    .close-modal i {
+        font-size: 1.2rem;
+    }
+
+    /* Share Menu Adjustments */
+    .share-menu {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background: var(--bg-color);
+        padding: 25px 20px calc(25px + env(safe-area-inset-bottom));
+        border-radius: 20px 20px 0 0;
+        z-index: 4;
+        transform: translateY(100%);
+        transition: transform 0.3s ease;
+        border-top: 1px solid rgba(100, 255, 218, 0.1);
+        backdrop-filter: blur(10px);
+    }
+
+    .share-menu.active {
+        transform: translateY(0);
+    }
+
+    .share-menu h3 {
+        font-size: 1.2rem;
+        color: var(--primary-color);
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+    .share-buttons {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .share-button, .copy-link {
+        height: 56px;
+        font-size: 1rem;
+        border-radius: 12px;
+        background: rgba(100, 255, 218, 0.05);
+        border: 1px solid rgba(100, 255, 218, 0.2);
+        color: var(--primary-color);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    .share-button i, .copy-link i {
+        font-size: 1.2rem;
+    }
+}
+
+/* Extra small devices */
+@media screen and (max-width: 380px) {
+    .modal-content {
+        padding: 15px;
+    }
+
+    .modal-title {
+        font-size: 1.6rem;
+    }
+
+    .project-icon {
+        width: 80px;
+        height: 80px;
+    }
+
+    .project-info {
+        font-size: 0.95rem;
+    }
+
+    .modal-footer .btn {
+        height: 50px;
+        font-size: 0.95rem;
+    }
+}
+
+/* Handle notched phones */
+@supports (padding: env(safe-area-inset-top)) {
+    @media screen and (max-width: 768px) {
+        .modal-content {
+            padding-top: max(20px, env(safe-area-inset-top));
+            padding-bottom: max(20px, env(safe-area-inset-bottom));
+            padding-left: max(20px, env(safe-area-inset-left));
+            padding-right: max(20px, env(safe-area-inset-right));
+        }
+
+        .close-modal {
+            top: max(15px, env(safe-area-inset-top));
+            right: max(15px, env(safe-area-inset-right));
+        }
+
+        .modal-footer {
+            padding-bottom: env(safe-area-inset-bottom);
+        }
+    }
+}
+
+/* Additional mobile optimizations */
+@media screen and (max-width: 480px) {
+    .modal-content {
+        padding: 15px;
+    }
+
+    .modal-title {
+        font-size: 1.5rem;
+    }
+
+    .tech-stack span {
+        padding: 5px 10px;
+        font-size: 0.85rem;
+    }
+
+    .project-info {
+        font-size: 0.9rem;
+    }
+
+    .modal-footer .btn {
+        padding: 12px;
+        font-size: 0.95rem;
+    }
+}
+
+/* Handle landscape mode */
+@media screen and (max-height: 600px) and (orientation: landscape) {
+    .modal.show .modal-content {
+        transform: translateY(0);
+        height: 100vh;
+        border-radius: 0;
+    }
+
+    .project-preview {
+        margin: 10px 0;
+    }
+
+    .project-icon {
+        width: 60px;
+        height: 60px;
+    }
+
+    .modal-footer {
+        flex-direction: row;
+    }
+}
+
+/* Enhanced Modal Styles */
+.modal-header {
+    margin-bottom: 20px;
+}
+
+.modal-tech-stack {
+    margin-top: 15px;
+}
+
+.project-preview {
+    text-align: center;
+    margin: 30px 0;
+    padding: 20px;
+    background: rgba(100, 255, 218, 0.05);
+    border-radius: 15px;
+    transition: all 0.3s ease;
+}
+
+.project-info {
+    margin-top: 20px;
+}
+
+.modal-footer {
+    display: flex;
+    gap: 15px;
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(100, 255, 218, 0.1);
+}
+
+.modal-footer .btn {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.modal-footer .btn i {
+    font-size: 1.1rem;
+}
+
+/* Share Menu */
+.share-menu {
+    position: fixed;
+    bottom: -100%;
+    left: 0;
+    width: 100%;
+    background: var(--bg-color);
+    padding: 25px;
+    border-radius: 20px 20px 0 0;
+    border-top: 1px solid var(--primary-color);
+    transition: bottom 0.3s ease;
+    z-index: 1001;
+}
+
+.share-menu.active {
+    bottom: 0;
+}
+
+.share-menu h3 {
+    text-align: center;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+}
+
+.share-buttons {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    padding: 10px;
+}
+
+.share-button, .copy-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 15px;
+    background: rgba(100, 255, 218, 0.1);
+    border: 1px solid var(--primary-color);
+    border-radius: 8px;
+    color: var(--primary-color);
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.share-button:hover, .copy-link:hover {
+    background: rgba(100, 255, 218, 0.2);
+    transform: translateY(-2px);
+}
+
+.close-share {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: rgba(100, 255, 218, 0.1);
+    border: 1px solid var(--primary-color);
+    color: var(--primary-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.close-share:hover {
+    background: rgba(100, 255, 218, 0.2);
+    transform: rotate(90deg);
+}
+
+/* Animation keyframes */
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Dark theme support */
+[data-theme="light"] .share-menu {
+    background: var(--bg-color);
+    border-color: var(--primary-color);
 } 

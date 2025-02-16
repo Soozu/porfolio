@@ -10,8 +10,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 </head>
 <body>
-    <div class="cursor"></div>
-    <div class="cursor-follower"></div>
     <div id="canvas-container"></div>
 
     <div class="sidebar">
@@ -41,68 +39,115 @@
         </header>
 
         <section id="skills" class="active">
-            <h2>Skills & Technologies</h2>
+            <div class="skills-header">
+                <h2>Skills & Technologies</h2>
+                <p>My technical skills and areas of expertise</p>
+            </div>
+
             <div class="skills-container">
-                <div class="skills-categories">
-                    <div class="category">
+                <div class="skills-category">
+                    <div class="category-header">
+                        <i class="fas fa-desktop"></i>
                         <h3>Frontend Development</h3>
-                        <div class="skills-box">
-                            <div class="skill-item">
-                                <img src="icons/html5.svg" alt="HTML5">
-                                <span>HTML5</span>
-                                <div class="skill-line"></div>
+                    </div>
+                    <div class="skills-grid">
+                        <div class="skill-item" data-skill="HTML5">
+                            <img src="icons/html5.svg" alt="HTML5">
+                            <div class="skill-info">
+                                <span class="skill-name">HTML5</span>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 95%"></div>
+                                </div>
                             </div>
-                            <div class="skill-item">
-                                <img src="icons/css3.svg" alt="CSS3">
-                                <span>CSS3</span>
-                                <div class="skill-line"></div>
+                        </div>
+                        <div class="skill-item" data-skill="CSS3">
+                            <img src="icons/css3.svg" alt="CSS3">
+                            <div class="skill-info">
+                                <span class="skill-name">CSS3</span>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 90%"></div>
+                                </div>
                             </div>
-                            <div class="skill-item">
-                                <img src="icons/javascript.svg" alt="JavaScript">
-                                <span>JavaScript</span>
-                                <div class="skill-line"></div>
+                        </div>
+                        <div class="skill-item" data-skill="JavaScript">
+                            <img src="icons/javascript.svg" alt="JavaScript">
+                            <div class="skill-info">
+                                <span class="skill-name">JavaScript</span>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 85%"></div>
+                                </div>
                             </div>
                         </div>
                     </div>
+                </div>
 
-                    <div class="category">
+                <div class="skills-category">
+                    <div class="category-header">
+                        <i class="fas fa-server"></i>
                         <h3>Backend Development</h3>
-                        <div class="skills-box">
-                            <div class="skill-item">
-                                <img src="icons/nodejs.svg" alt="Node.js">
-                                <span>Node.js</span>
-                                <div class="skill-line"></div>
+                    </div>
+                    <div class="skills-grid">
+                        <div class="skill-item" data-skill="Node.js">
+                            <img src="icons/nodejs.svg" alt="Node.js">
+                            <div class="skill-info">
+                                <span class="skill-name">Node.js</span>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 80%"></div>
+                                </div>
                             </div>
-                            <div class="skill-item">
-                                <img src="icons/php.svg" alt="PHP">
-                                <span>PHP</span>
-                                <div class="skill-line"></div>
+                        </div>
+                        <div class="skill-item" data-skill="PHP">
+                            <img src="icons/php.svg" alt="PHP">
+                            <div class="skill-info">
+                                <span class="skill-name">PHP</span>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 85%"></div>
+                                </div>
                             </div>
-                            <div class="skill-item">
-                                <img src="icons/mysql.svg" alt="MySQL">
-                                <span>MySQL</span>
-                                <div class="skill-line"></div>
+                        </div>
+                        <div class="skill-item" data-skill="MySQL">
+                            <img src="icons/mysql.svg" alt="MySQL">
+                            <div class="skill-info">
+                                <span class="skill-name">MySQL</span>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 75%"></div>
+                                </div>
                             </div>
                         </div>
                     </div>
+                </div>
 
-                    <div class="category">
-                        <h3>Tools & Others</h3>
-                        <div class="skills-box">
-                            <div class="skill-item">
-                                <img src="icons/git.svg" alt="Git">
-                                <span>Git</span>
-                                <div class="skill-line"></div>
+                <div class="skills-category">
+                    <div class="category-header">
+                        <i class="fas fa-tools"></i>
+                        <h3>Tools & Technologies</h3>
+                    </div>
+                    <div class="skills-grid">
+                        <div class="skill-item" data-skill="Git">
+                            <img src="icons/git.svg" alt="Git">
+                            <div class="skill-info">
+                                <span class="skill-name">Git</span>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 88%"></div>
+                                </div>
                             </div>
-                            <div class="skill-item">
-                                <img src="icons/docker.svg" alt="Docker">
-                                <span>Docker</span>
-                                <div class="skill-line"></div>
+                        </div>
+                        <div class="skill-item" data-skill="Docker">
+                            <img src="icons/docker.svg" alt="Docker">
+                            <div class="skill-info">
+                                <span class="skill-name">Docker</span>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 70%"></div>
+                                </div>
                             </div>
-                            <div class="skill-item">
-                                <img src="icons/aws.svg" alt="AWS">
-                                <span>AWS</span>
-                                <div class="skill-line"></div>
+                        </div>
+                        <div class="skill-item" data-skill="AWS">
+                            <img src="icons/aws.svg" alt="AWS">
+                            <div class="skill-info">
+                                <span class="skill-name">AWS</span>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 65%"></div>
+                                </div>
                             </div>
                         </div>
                     </div>

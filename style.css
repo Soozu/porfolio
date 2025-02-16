@@ -18,7 +18,6 @@ body {
     line-height: 1.6;
     color: var(--text-color);
     background: var(--bg-color);
-    cursor: none; /* Hide the default cursor */
     transition: var(--transition);
 }
 
@@ -908,169 +907,114 @@ body.modal-open {
     opacity: 1; /* Show feedback */
 }
 
-/* Main cursor dot */
-.cursor {
-    width: 8px;
-    height: 8px;
-    background-color: var(--primary-color);
-    border-radius: 50%;
-    position: fixed;
-    pointer-events: none;
-    z-index: 9999;
-    transition: transform 0.2s ease;
-    transform: translate(-50%, -50%);
+/* Interactive elements cursor */
+.btn,
+.project-card,
+.nav-links a,
+button {
+    cursor: pointer;
 }
 
-/* Cursor outer ring */
+/* Remove cursor-related media queries */
+@media (hover: none) and (pointer: coarse), (max-width: 768px) {
+    body {
+        cursor: auto;
+    }
+}
+
+/* Add cursor transitions */
+.cursor,
 .cursor-follower {
-    width: 30px;
-    height: 30px;
-    border: 2px solid var(--primary-color);
-    border-radius: 50%;
-    position: fixed;
-    pointer-events: none;
-    z-index: 9998;
-    transition: transform 0.15s ease;
-    transform: translate(-50%, -50%);
+    will-change: transform, width, height, background-color, border-color;
 }
 
-/* Cursor hover effect */
-.link-hover {
-    transform: scale(1.5);
-    background-color: transparent;
-    border: 1px solid var(--primary-color);
+/* Cursor animations */
+@keyframes cursorPing {
+    0% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 1;
+    }
+    70% {
+        transform: translate(-50%, -50%) scale(2);
+        opacity: 0;
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 0;
+    }
 }
 
-.follower-hover {
-    transform: scale(1.3);
-    background-color: rgba(100, 255, 218, 0.1);
-}
-
-/* Add hover states for interactive elements */
-a:hover ~ .cursor,
-button:hover ~ .cursor,
-.project-card:hover ~ .cursor {
-    transform: scale(1.5);
-}
-
-a:hover ~ .cursor-follower,
-button:hover ~ .cursor-follower,
-.project-card:hover ~ .cursor-follower {
-    transform: scale(0.8);
-}
-
-/* Updated Contact Section Styles */
-.contact-container {
-    display: flex;
-    gap: 40px;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-}
-
-.contact-info {
-    flex: 1;
-    padding: 30px;
-    background: rgba(255, 255, 255, 0.03);
-    border-radius: 20px;
-    border: 1px solid rgba(100, 255, 218, 0.1);
-    backdrop-filter: blur(10px);
-}
-
-.contact-item {
-    display: flex;
-    align-items: center;
-    margin-bottom: 30px;
-    padding: 15px;
-    border-radius: 10px;
-    background: rgba(255, 255, 255, 0.02);
-    transition: all 0.3s ease;
-}
-
-.contact-item:hover {
-    transform: translateX(10px);
-    background: rgba(100, 255, 218, 0.05);
-}
-
-.contact-item i {
-    font-size: 24px;
-    color: var(--primary-color);
-    margin-right: 15px;
-    width: 40px;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-    background: rgba(100, 255, 218, 0.1);
-}
-
-.contact-details h3 {
-    font-size: 1.1rem;
-    color: var(--primary-color);
-    margin-bottom: 5px;
-}
-
-.contact-details p {
-    color: var(--text-color);
-    font-size: 0.9rem;
-}
-
-.social-links-contact {
-    display: flex;
-    gap: 15px;
-    margin-top: 30px;
-    padding: 15px;
-    justify-content: center;
-    border-top: 1px solid rgba(100, 255, 218, 0.1);
-}
-
-.social-links-contact a {
-    width: 40px;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-    background: rgba(100, 255, 218, 0.1);
-    color: var(--primary-color);
-    transition: all 0.3s ease;
-}
-
-.social-links-contact a:hover {
-    transform: translateY(-5px);
-    background: rgba(100, 255, 218, 0.2);
-}
-
-#contact-form {
-    flex: 1.5;
-}
-
-button[type="submit"] {
+/* Enhanced cursor effects */
+.cursor::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
     width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
+    height: 100%;
+    transform: translate(-50%, -50%);
+    border-radius: inherit;
+    background: inherit;
+    opacity: 0.5;
+    animation: cursorPulse 2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
 }
 
-button[type="submit"] i {
-    transition: transform 0.3s ease;
-}
-
-button[type="submit"]:hover i {
-    transform: translateX(5px);
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-    .contact-container {
-        flex-direction: column;
+@keyframes cursorPulse {
+    0% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 0.5;
     }
-    
-    .contact-info, #contact-form {
-        width: 100%;
+    50% {
+        transform: translate(-50%, -50%) scale(1.5);
+        opacity: 0;
     }
+    100% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 0.5;
+    }
+}
+
+/* Cursor glow effect */
+.cursor::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, var(--primary-color) 0%, transparent 70%);
+    transform: translate(-50%, -50%);
+    opacity: 0.1;
+    pointer-events: none;
+}
+
+/* Cursor trail effect */
+.cursor-trail {
+    position: fixed;
+    width: 5px;
+    height: 5px;
+    background: var(--primary-color);
+    border-radius: 50%;
+    pointer-events: none;
+    opacity: 0.5;
+    transition: opacity 0.3s ease;
+    z-index: 9997;
+}
+
+/* Cursor magnetic effect */
+.magnetic-target {
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.magnetic-target:hover ~ .cursor {
+    transform: translate(-50%, -50%) scale(1.5);
+    background-color: var(--primary-color);
+    mix-blend-mode: normal;
+}
+
+.magnetic-target:hover ~ .cursor-follower {
+    transform: translate(-50%, -50%) scale(0.5);
+    opacity: 0;
 }
 
 /* Mobile Navigation Fixes */
@@ -1581,5 +1525,123 @@ body, .sidebar, .nav-links a, .hero-content, .btn,
     to {
         opacity: 1;
         transform: scale(1);
+    }
+}
+
+/* Loading Animation Styles */
+.loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--background-color, #ffffff);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    transition: opacity 0.3s ease-out;
+}
+
+.loader {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.loader-content {
+    text-align: center;
+}
+
+.circular {
+    animation: rotate 2s linear infinite;
+    height: 80px;
+    width: 80px;
+    margin-bottom: 20px;
+}
+
+.path {
+    stroke: var(--primary-color, #007bff);
+    stroke-dasharray: 89, 200;
+    stroke-dashoffset: 0;
+    stroke-linecap: round;
+    animation: dash 1.5s ease-in-out infinite;
+}
+
+.loading-text {
+    color: var(--text-color, #333);
+    font-size: 1.5rem;
+    margin: 0;
+    font-weight: 500;
+}
+
+.dots {
+    animation: dots 1.5s infinite;
+}
+
+@keyframes rotate {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes dash {
+    0% {
+        stroke-dasharray: 1, 200;
+        stroke-dashoffset: 0;
+    }
+    50% {
+        stroke-dasharray: 89, 200;
+        stroke-dashoffset: -35;
+    }
+    100% {
+        stroke-dasharray: 89, 200;
+        stroke-dashoffset: -124;
+    }
+}
+
+@keyframes dots {
+    0%, 20% {
+        content: ".";
+    }
+    40% {
+        content: "..";
+    }
+    60%, 100% {
+        content: "...";
+    }
+}
+
+/* Cursor Styles */
+@media (hover: none) and (pointer: coarse) {
+    .cursor,
+    .cursor-follower {
+        display: none !important;
+    }
+
+    body {
+        cursor: auto !important;
+    }
+
+    a, button, .project-card, .nav-links a {
+        cursor: pointer !important;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .cursor,
+    .cursor-follower {
+        display: none !important;
+    }
+
+    body {
+        cursor: auto !important;
+    }
+
+    a, button, .project-card, .nav-links a {
+        cursor: pointer !important;
     }
 } 

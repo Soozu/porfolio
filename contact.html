@@ -10,8 +10,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 </head>
 <body>
-    <div class="cursor"></div>
-    <div class="cursor-follower"></div>
     <div id="canvas-container"></div>
 
     <div class="sidebar">
@@ -41,77 +39,122 @@
         </header>
 
         <section id="contact" class="active">
-            <h2>Get In Touch</h2>
+            <div class="contact-header">
+                <h2>Get In Touch</h2>
+                <p>Let's work together on something great</p>
+            </div>
+
             <div class="contact-container">
+                <!-- Contact Info Section -->
                 <div class="contact-info">
-                    <div class="contact-header">
-                        <h3>Contact Information</h3>
-                        <p>Feel free to reach out through any of these channels</p>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-envelope"></i>
-                        <div class="contact-details">
-                            <h3>Email</h3>
-                            <p>contact@soozu.com</p>
+                    <div class="info-header">
+                        <i class="fas fa-paper-plane"></i>
+                        <div class="header-text">
+                            <h3>Contact Information</h3>
+                            <p>Feel free to reach out through any of these channels</p>
                         </div>
                     </div>
-                    <div class="contact-item">
-                        <i class="fas fa-phone"></i>
-                        <div class="contact-details">
-                            <h3>Phone</h3>
-                            <p>+1234567890</p>
+                    
+                    <div class="info-grid">
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <div class="contact-details">
+                                <h4>Email</h4>
+                                <a href="mailto:contact@soozu.com">contact@soozu.com</a>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <div class="contact-details">
+                                <h4>Phone</h4>
+                                <a href="tel:+1234567890">+1234567890</a>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div class="contact-details">
+                                <h4>Location</h4>
+                                <p>Manila, Philippines</p>
+                            </div>
                         </div>
                     </div>
-                    <div class="contact-item">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <div class="contact-details">
-                            <h3>Location</h3>
-                            <p>Manila, Philippines</p>
-                        </div>
-                    </div>
-                    <div class="social-links-contact">
-                        <a href="https://github.com/soozu" target="_blank">
+
+                    <div class="social-links">
+                        <a href="https://github.com/soozu" target="_blank" class="social-btn">
                             <i class="fab fa-github"></i>
+                            <span>GitHub</span>
                         </a>
-                        <a href="https://www.youtube.com/watch?v=XvLoUeg1Q8I" target="_blank">
+                        <a href="https://linkedin.com/in/soozu" target="_blank" class="social-btn">
                             <i class="fab fa-linkedin"></i>
+                            <span>LinkedIn</span>
                         </a>
-                        <a href="https://www.youtube.com/watch?v=XvLoUeg1Q8I" target="_blank">
+                        <a href="https://twitter.com/soozu" target="_blank" class="social-btn">
                             <i class="fab fa-twitter"></i>
+                            <span>Twitter</span>
                         </a>
                     </div>
                 </div>
 
-                <form id="contact-form">
+                <!-- Contact Form Section -->
+                <form id="contact-form" class="contact-form">
                     <div class="form-header">
-                        <h3>Send Me a Message</h3>
-                        <p>I'll get back to you as soon as possible</p>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="name">Name</label>
-                            <input type="text" id="name" name="name" required>
+                        <i class="fas fa-comments"></i>
+                        <div class="header-text">
+                            <h3>Send Me a Message</h3>
+                            <p>I'll get back to you as soon as possible</p>
                         </div>
+                    </div>
+
+                    <div class="form-content">
                         <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" id="email" name="email" required>
+                            <label for="name">Full Name</label>
+                            <div class="input-container">
+                                <i class="fas fa-user"></i>
+                                <input type="text" id="name" name="name" placeholder="Your name" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <div class="input-container">
+                                <i class="fas fa-envelope"></i>
+                                <input type="email" id="email" name="email" placeholder="Your email" required>
+                            </div>
                             <div class="email-feedback"></div>
                         </div>
+
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <div class="input-container">
+                                <i class="fas fa-bookmark"></i>
+                                <input type="text" id="subject" name="subject" placeholder="Message subject" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <div class="input-container">
+                                <i class="fas fa-comment-alt"></i>
+                                <textarea id="message" name="message" placeholder="Your message" required></textarea>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="submit-btn">
+                            <span>Send Message</span>
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
                     </div>
-                    <div class="form-group">
-                        <label for="message">Message</label>
-                        <textarea id="message" name="message" required></textarea>
-                    </div>
-                    <button type="submit">
-                        <span>Send Message</span>
-                        <i class="fas fa-paper-plane"></i>
-                    </button>
                 </form>
             </div>
-            <div class="success-message" id="success-message">
-                Message sent successfully!
-            </div>
         </section>
+
+        <!-- Success Message Toast -->
+        <div class="success-message" id="success-message">
+            <i class="fas fa-check-circle"></i>
+            <span>Message sent successfully!</span>
+        </div>
     </div>
 
     <script src="script.js"></script>

@@ -182,46 +182,84 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Cursor effect
-    const cursor = document.querySelector('.cursor');
-    const cursorFollower = document.querySelector('.cursor-follower');
-    
-    document.addEventListener('mousemove', function(e) {
-        cursor.style.left = e.clientX + 'px';
-        cursor.style.top = e.clientY + 'px';
+    // Check if device is touch-enabled or mobile
+    const isTouchDevice = () => {
+        return (('ontouchstart' in window) ||
+                (navigator.maxTouchPoints > 0) ||
+                (navigator.msMaxTouchPoints > 0));
+    }
+
+    const isSmallScreen = () => {
+        return window.innerWidth <= 768;
+    }
+
+    // Only initialize custom cursor if not a touch device and not a small screen
+    if (!isTouchDevice() && !isSmallScreen()) {
+        const cursor = document.querySelector('.cursor');
+        const cursorFollower = document.querySelector('.cursor-follower');
+
+        let mouseX = 0;
+        let mouseY = 0;
+        let followerX = 0;
+        let followerY = 0;
+
+        function moveCustomCursor(e) {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+            
+            cursor.style.transform = `translate(${mouseX}px, ${mouseY}px)`;
+            
+            // Add smooth following effect
+            requestAnimationFrame(updateFollower);
+        }
+
+        function updateFollower() {
+            // Calculate smooth following movement
+            const deltaX = mouseX - followerX;
+            const deltaY = mouseY - followerY;
+            
+            followerX += deltaX * 0.1;
+            followerY += deltaY * 0.1;
+            
+            cursorFollower.style.transform = `translate(${followerX}px, ${followerY}px)`;
+            
+            if (Math.abs(deltaX) > 0.1 || Math.abs(deltaY) > 0.1) {
+                requestAnimationFrame(updateFollower);
+            }
+        }
+
+        // Add hover effects for interactive elements
+        const interactiveElements = document.querySelectorAll('a, button, .project-card, .nav-links a');
         
-        // Add slight delay to follower
-        setTimeout(function() {
-            cursorFollower.style.left = e.clientX + 'px';
-            cursorFollower.style.top = e.clientY + 'px';
-        }, 50);
-    });
-    
-    // Add hover effect for interactive elements
-    const links = document.querySelectorAll('a, button, .project-card, .skill');
-    
-    links.forEach(link => {
-        link.addEventListener('mouseenter', () => {
-            cursor.classList.add('link-hover');
-            cursorFollower.classList.add('follower-hover');
+        interactiveElements.forEach(el => {
+            el.addEventListener('mouseenter', () => {
+                cursor.classList.add('link-hover');
+                cursorFollower.classList.add('follower-hover');
+            });
+            
+            el.addEventListener('mouseleave', () => {
+                cursor.classList.remove('link-hover');
+                cursorFollower.classList.remove('follower-hover');
+            });
         });
-        
-        link.addEventListener('mouseleave', () => {
-            cursor.classList.remove('link-hover');
-            cursorFollower.classList.remove('follower-hover');
+
+        // Add mouse event listeners
+        document.addEventListener('mousemove', moveCustomCursor);
+        document.addEventListener('mouseout', () => {
+            cursor.style.opacity = '0';
+            cursorFollower.style.opacity = '0';
         });
-    });
-    
-    // Hide cursor when leaving window
-    document.addEventListener('mouseleave', () => {
-        cursor.style.display = 'none';
-        cursorFollower.style.display = 'none';
-    });
-    
-    document.addEventListener('mouseenter', () => {
-        cursor.style.display = 'block';
-        cursorFollower.style.display = 'block';
-    });
+        document.addEventListener('mouseover', () => {
+            cursor.style.opacity = '1';
+            cursorFollower.style.opacity = '1';
+        });
+    } else {
+        // Remove custom cursor elements if on touch device or small screen
+        const cursor = document.querySelector('.cursor');
+        const cursorFollower = document.querySelector('.cursor-follower');
+        if (cursor) cursor.remove();
+        if (cursorFollower) cursorFollower.remove();
+    }
 
     // Add animation delay to each letter
     const h1Spans = document.querySelectorAll('.hero h1 span');

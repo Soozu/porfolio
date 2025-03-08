@@ -7,27 +7,19 @@
       "use": "@vercel/static"
     },
     {
-      "src": "api/index.js",
-      "use": "@vercel/node"
-    },
-    {
-      "src": "*.css",
+      "src": "css/**/*.css",
       "use": "@vercel/static"
     },
     {
-      "src": "*.js",
+      "src": "js/**/*.js",
       "use": "@vercel/static"
     },
     {
-      "src": "icons/**/*",
+      "src": "img/**/*",
       "use": "@vercel/static"
     }
   ],
   "routes": [
-    {
-      "src": "/api/send",
-      "dest": "/api"
-    },
     {
       "src": "/(.*)",
       "dest": "/$1"

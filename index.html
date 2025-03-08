@@ -2,121 +2,176 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Soozu | Portfolio</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 </head>
 <body>
-    <div class="page-transition"></div>
-    
-    <!-- Loading Animation -->
-    <div class="loading-screen">
-        <div class="loader">
-            <div class="loader-content">
-                <svg class="circular" viewBox="25 25 50 50">
-                    <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="3" stroke-miterlimit="10"/>
-                </svg>
-                <h2 class="loading-text">Loading<span class="dots">...</span></h2>
-            </div>
-        </div>
-    </div>
-    
-    <div id="canvas-container"></div>
-
-    <div class="sidebar">
-        <div class="nav-links">
-            <a href="index.html" class="active">
-                <i class="fas fa-home"></i>
-                <span>Home</span>
-            </a>
-            <a href="projects.html">
-                <i class="fas fa-code"></i>
-                <span>Projects</span>
-            </a>
-            <a href="skills.html">
-                <i class="fas fa-tools"></i>
-                <span>Skills</span>
-            </a>
-            <a href="contact.html">
-                <i class="fas fa-envelope"></i>
-                <span>Contact</span>
-            </a>
-        </div>
-    </div>
-
-    <div class="container">
-        <header>
+    <nav class="navbar">
+        <div class="nav-content">
             <div class="logo">SOOZU</div>
-            <div class="theme-switch-wrapper">
-                <label class="theme-switch" for="checkbox">
-                    <input type="checkbox" id="checkbox" />
-                    <div class="slider"></div>
-                </label>
+            <div class="nav-links">
+                <a href="#home" class="active">Home</a>
+                <a href="#about">About</a>
+                <a href="#projects">Projects</a>
+                <a href="#contact">Contact</a>
             </div>
-        </header>
+        </div>
+    </nav>
 
-        <section id="home" class="active">
-            <div class="hero">
-                <div class="hero-content">
-                    <h1>Hi, I'm <span class="highlight">Soozu</span></h1>
-                    <h2>Full Stack Developer</h2>
-                    <p>I build things for the web</p>
-                    <div class="cta-buttons">
-                        <a href="projects.html" class="btn primary">View My Work</a>
-                        <a href="contact.html" class="btn secondary">Get In Touch</a>
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <div class="profile-container">
+                <img src="img/profile.png" alt="Soozu" class="profile-image">
+            </div>
+            <h1>Hi, I'm <span class="highlight">Soozu</span></h1>
+            <h2>IT Student & Developer</h2>
+            <p>Passionate about creating innovative solutions through code</p>
+            <div class="cta-buttons">
+                <a href="#projects" class="btn primary">View Projects</a>
+                <a href="#contact" class="btn secondary">Contact Me</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="about">
+        <div class="container">
+            <h2>About Me</h2>
+            <div class="about-content">
+                <p>I'm an IT student passionate about web development and software engineering. 
+                   I focus on creating efficient, user-friendly solutions to real-world problems.</p>
+                <div class="skills">
+                    <h3>Technical Skills</h3>
+                    <ul>
+                        <li>Web Development (HTML, CSS, JavaScript)</li>
+                        <li>Backend Development (Node.js, PHP)</li>
+                        <li>Database Management (MySQL, MongoDB)</li>
+                        <li>Version Control (Git)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects">
+        <div class="container">
+            <h2>Projects</h2>
+            <div class="project-grid">
+                <!-- Row 1 -->
+                <div class="project-card">
+                    <div class="project-content">
+                        <h3>RFID Attendance System</h3>
+                        <p>A PHP-based RFID attendance tracking system with user management and Excel export capabilities.</p>
+                        <div class="tech-stack">
+                            <span>PHP</span>
+                            <span>MySQL</span>
+                            <span>JavaScript</span>
+                            <span>RFID</span>
+                        </div>
+                        <a href="https://github.com/Soozu/RFID" class="project-link">View Project</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-content">
+                        <h3>Stove Account Generator</h3>
+                        <p>Python GUI application for automated account generation with management features.</p>
+                        <div class="tech-stack">
+                            <span>Python</span>
+                            <span>Selenium</span>
+                            <span>GUI</span>
+                            <span>Automation</span>
+                        </div>
+                        <a href="https://github.com/Soozu/stove-account-generator" class="project-link">View Project</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-content">
+                        <h3>E-commerce Platform</h3>
+                        <p>Full-featured e-commerce solution with modern features and secure payment processing.</p>
+                        <div class="tech-stack">
+                            <span>PHP</span>
+                            <span>MySQL</span>
+                            <span>JavaScript</span>
+                            <span>E-commerce</span>
+                        </div>
+                        <a href="https://github.com/Soozu/ecommerce" class="project-link">View Project</a>
+                    </div>
+                </div>
+
+                <!-- Row 2 -->
+                <div class="project-card">
+                    <div class="project-content">
+                        <h3>Remote PC Manager</h3>
+                        <p>Secure remote desktop management solution for controlling computers remotely.</p>
+                        <div class="tech-stack">
+                            <span>PHP</span>
+                            <span>WebSocket</span>
+                            <span>Security</span>
+                            <span>Remote Access</span>
+                        </div>
+                        <a href="https://github.com/Soozu/Remote-pc" class="project-link">View Project</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-content">
+                        <h3>LMS-STTMS</h3>
+                        <p>Learning Management System built with modern web technologies.</p>
+                        <div class="tech-stack">
+                            <span>JavaScript</span>
+                            <span>Node.js</span>
+                            <span>Express</span>
+                            <span>MongoDB</span>
+                        </div>
+                        <a href="https://github.com/Soozu/LMS-STTMS" class="project-link">View Project</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-content">
+                        <h3>Tournament Manager</h3>
+                        <p>Comprehensive tournament management system for organizing competitive events.</p>
+                        <div class="tech-stack">
+                            <span>PHP</span>
+                            <span>MySQL</span>
+                            <span>JavaScript</span>
+                            <span>REST API</span>
+                        </div>
+                        <a href="https://github.com/Soozu/Tournamenr-manager" class="project-link">View Project</a>
                     </div>
                 </div>
             </div>
-        </section>
-    </div>
+        </div>
+    </section>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const loadingScreen = document.querySelector('.loading-screen');
-            const hasVisited = localStorage.getItem('hasVisited');
-            
-            if (!hasVisited) {
-                // First time visit - show loading animation
-                loadingScreen.style.display = 'flex';
-                setTimeout(() => {
-                    loadingScreen.style.opacity = '0';
-                    setTimeout(() => {
-                        loadingScreen.style.display = 'none';
-                        // Set first visit flag
-                        localStorage.setItem('hasVisited', 'true');
-                        
-                        // First visit animations
-                        document.body.classList.add('first-load');
-                        sessionStorage.setItem('firstLoad', 'true');
-                        
-                        // Remove transition overlay
-                        setTimeout(() => {
-                            const transition = document.querySelector('.page-transition');
-                            if (transition) {
-                                transition.parentNode.removeChild(transition);
-                            }
-                        }, 1000);
-                    }, 300);
-                }, 2000);
-            } else {
-                // Returning visitor - skip loading animation
-                loadingScreen.style.display = 'none';
-                document.body.classList.add('loaded');
-                const elements = document.querySelectorAll('.hero-content, .logo, h1, h2, p, .cta-buttons, .sidebar');
-                elements.forEach(el => el.style.opacity = '1');
-                
-                // Remove transition overlay immediately
-                const transition = document.querySelector('.page-transition');
-                if (transition) {
-                    transition.parentNode.removeChild(transition);
-                }
-            }
-        });
-    </script>
-    <script src="script.js"></script>
-    <script src="background.js"></script>
-    <script src="theme.js"></script>
+    <section id="contact">
+        <div class="container">
+            <h2>Get In Touch</h2>
+            <div class="contact-content">
+                <div class="social-links">
+                    <a href="https://github.com/Soozu" target="_blank" class="social-btn">
+                        <i class="fab fa-github"></i>
+                        <span>GitHub</span>
+                    </a>
+                    <a href="https://www.instagram.com/soozuu1/" target="_blank" class="social-btn">
+                        <i class="fab fa-instagram"></i>
+                        <span>Instagram</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Soozu. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/theme.js"></script>
 </body>
 </html> 

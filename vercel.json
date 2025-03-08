@@ -17,6 +17,10 @@
     {
       "src": "img/**/*",
       "use": "@vercel/static"
+    },
+    {
+      "src": "site.webmanifest",
+      "use": "@vercel/static"
     }
   ],
   "routes": [

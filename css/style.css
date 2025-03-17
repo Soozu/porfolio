@@ -143,12 +143,12 @@ body {
 
 /* Update hero section to work with the background */
 .hero {
-    position: relative;
-    z-index: 1;
     min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
+    padding: 80px 20px;
 }
 
 .hero::before {
@@ -164,33 +164,41 @@ body {
 
 .hero-content {
     text-align: center;
-    animation: fadeInUp 1s ease;
-    background: rgba(11, 17, 32, 0.6); /* Semi-transparent dark background */
+    background: rgba(11, 17, 32, 0.7);
     padding: 2rem;
-    border-radius: 16px;
+    border-radius: 20px;
     backdrop-filter: blur(10px);
-    border: 1px solid rgba(75, 158, 255, 0.1);
+    max-width: 90%;
+    margin: 0 auto;
 }
 
-/* Optional: Add some glow effects to the text */
+.profile-container {
+    margin-bottom: 2rem;
+}
+
+.profile-image {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    border: 3px solid var(--primary-color);
+    padding: 5px;
+}
+
 .hero h1 {
-    font-size: 3.5rem;
-    margin-bottom: 20px;
-    line-height: 1.2;
-    text-shadow: 0 0 10px rgba(75, 158, 255, 0.3);
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
 }
 
 .hero h2 {
-    font-size: 2rem;
+    font-size: 1.8rem;
     color: var(--primary-color);
-    margin-bottom: 20px;
-    text-shadow: 0 0 8px rgba(75, 158, 255, 0.2);
+    margin-bottom: 1rem;
 }
 
 .hero p {
-    font-size: 1.25rem;
-    color: var(--text-color);
-    margin-bottom: 30px;
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+    line-height: 1.6;
 }
 
 /* Button styles */
@@ -284,38 +292,57 @@ body {
 .skills {
     margin-top: 3rem;
     text-align: center;
+    padding: 2rem 0;
+}
+
+.skills h3 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    color: var(--text-color);
 }
 
 .skills-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 1.5rem;
-    margin-top: 1.5rem;
+    margin: 0 auto;
+    max-width: 1000px;
 }
 
 .skill-item {
-    background: var(--card-bg);
+    background: rgba(11, 17, 32, 0.7);
     border: 1px solid var(--border-color);
-    border-radius: 12px;
+    border-radius: 16px;
     padding: 1.5rem;
     transition: transform 0.3s ease;
     position: relative;
-    overflow: hidden;
-}
-
-.skill-item:hover {
-    transform: translateY(-5px);
+    backdrop-filter: blur(10px);
+    aspect-ratio: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .skill-item i {
-    font-size: 2rem;
-    margin-bottom: 0.5rem;
-    display: block;
+    font-size: 2.5rem;
+    margin-bottom: 0.8rem;
+    color: var(--primary-color);
 }
 
 .skill-item span {
     font-size: 1rem;
     font-weight: 500;
+}
+
+.skill-status {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 0.7rem;
+    padding: 4px 8px;
+    border-radius: 12px;
+    background: rgba(0, 0, 0, 0.3);
 }
 
 /* Skill status indicators */
@@ -331,16 +358,6 @@ body {
     color: #9333EA; /* Purple for planned */
 }
 
-.skill-status {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    font-size: 0.7rem;
-    padding: 4px 8px;
-    border-radius: 12px;
-    background: rgba(0, 0, 0, 0.2);
-}
-
 .skill-item.learning .skill-status {
     background: rgba(255, 165, 0, 0.2);
     color: #FFA500;
@@ -349,28 +366,6 @@ body {
 .skill-item.planned .skill-status {
     background: rgba(147, 51, 234, 0.2);
     color: #9333EA;
-}
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
-    .skills-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1rem;
-    }
-    
-    .skill-item {
-        padding: 1rem;
-    }
-    
-    .skill-item i {
-        font-size: 1.5rem;
-    }
-}
-
-@media (max-width: 480px) {
-    .skills-grid {
-        grid-template-columns: 1fr;
-    }
 }
 
 /* Projects Section */
@@ -390,51 +385,26 @@ body {
     background: var(--card-bg);
     border: 1px solid var(--border-color);
     border-radius: 16px;
-    padding: 2rem;
-    transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
-    backdrop-filter: blur(10px);
-}
-
-.project-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 3px;
-    background: linear-gradient(90deg, var(--primary-color), var(--highlight-color));
-    transform: scaleX(0);
-    transition: transform 0.3s ease;
-}
-
-.project-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-}
-
-.project-card:hover::before {
-    transform: scaleX(1);
+    padding: 1.5rem;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
 .project-content {
+    height: 100%;
     display: flex;
     flex-direction: column;
-    height: 100%;
 }
 
 .project-content h3 {
-    color: var(--highlight-color);
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     margin-bottom: 1rem;
 }
 
-.project-card p {
-    color: #E5E7EB;
-    margin-bottom: 20px;
+.project-content p {
     font-size: 0.95rem;
-    line-height: 1.6;
+    margin-bottom: 1rem;
     flex-grow: 1;
 }
 
@@ -1029,33 +999,58 @@ h2, h3 {
     }
 }
 
-/* Responsive adjustments */
-@media (max-width: 992px) {
+/* Mobile Responsive Adjustments */
+@media (max-width: 768px) {
     .skills-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1.5rem;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0.8rem;
+        padding: 0 1rem;
+        max-width: 400px;
     }
     
     .skill-item {
-        padding: 2rem 1.5rem;
+        padding: 1rem;
     }
     
     .skill-item i {
-        font-size: 3rem;
+        font-size: 2rem;
+        margin-bottom: 0.5rem;
+    }
+    
+    .skill-item span {
+        font-size: 0.9rem;
+    }
+    
+    .skill-status {
+        font-size: 0.6rem;
+        padding: 3px 6px;
     }
 }
 
-@media (max-width: 576px) {
+/* Very Small Screens */
+@media (max-width: 360px) {
     .skills-grid {
-        grid-template-columns: 1fr;
-        gap: 1rem;
+        gap: 0.5rem;
+        padding: 0 0.5rem;
     }
     
     .skill-item {
-        padding: 1.5rem;
+        padding: 0.8rem;
     }
     
     .skill-item i {
-        font-size: 2.5rem;
+        font-size: 1.8rem;
+    }
+    
+    .skill-item span {
+        font-size: 0.8rem;
+    }
+}
+
+/* Maintain 3x3 grid in landscape */
+@media (max-width: 768px) and (orientation: landscape) {
+    .skills-grid {
+        grid-template-columns: repeat(3, 1fr);
+        max-width: 600px;
     }
 }
